@@ -16,6 +16,7 @@
             <div class="input-wrapper">
                 <input type="text" placeholder="Name" id="name-input">
                 <button> Go </button>
+				
             </div>
         </section>
         <div class="main">
@@ -23,7 +24,7 @@
                 <div class="right floated user-name"> </div>
             </header>
             <section class="content">
-			<audio src="Car Nachdi.mp3"></audio>
+			<audio></audio>
                <div class="list-headers">
         <div> Title </div> 
         <div> Artist </div>
@@ -31,20 +32,50 @@
         <div> Duration </div>
         </div>
         <div class="song-list">
-        <div class="song">
-        <span class="song-name"></span>
+        <div class="song" id="song1">
+       <span class="song-name"></span>
 		
-        <span class="song-artist"></span>
+         <!--<span class="song-artist"></span>
         <span class="song-album"></span>
-        <span class="song-length"></span>
+        <span class="song-length"></span>--->
         </div>
+		<div class="song" id="song2">
+			<span class="song-name"> </span>
+			</div>
+			<div class="song" id="song3">
+			<span class="song-name"> </span>
+			</div>
+			<div class="song" id="song4">
+			<span class="song-name"> </span>
+			</div>
+		<div class="song" id="song5">
+			<span class="song-name"> </span>
+			</div>
+			<div class="song" id="song6">
+			<span class="song-name"> </span>
+			</div>
+		
+		
+		 
         </div>
             </section>
             <footer>
                 <div class="controls">
-                    <div class="player-buttons">
+                    <span class="player-buttons">
                         <i class="fa fa-play clickable play-icon" aria-hidden="true"></i>
-                    </div>
+                    
+					</span>
+					<span class="player">
+                        <i class="fa fa-forward clickable forward-icon" aria-hidden="true"></i>
+                    
+					</span>
+					
+					<span class="backward">
+                        <i class="fa fa-backward clickable backword-icon" aria-hidden="true"></i>
+                    
+					</span>
+					
+					
                     <div class="progress-wrapper">
                         <span class="time-elapsed"> </span>
                         <div class="player-progress">
@@ -57,106 +88,8 @@
         </div>
     </div>
     <script src="jquery.js"></script>
-    <script>
-	<!-------------------------------------------------function------------------------------------------------------------------------------------------------->
-				function toggleSong() {
-			var song = document.querySelector('audio');
-			if(song.paused == true) {
-			console.log('Playing');
-			$('.play-icon').removeClass('fa-play').addClass('fa-pause');
-			song.play();
-			}
-			else {
-			console.log('Pausing');
-			$('.play-icon').removeClass('fa-pause').addClass('fa-play');
-			song.pause();
-			}
-			}
-			function fancyTimeFormat(time)
-{   
-    // Hours, minutes and seconds
-    var hrs = ~~(time / 3600);
-    var mins = ~~((time % 3600) / 60);
-    var secs = time % 60;
-
-    // Output like "1:01" or "4:03:59" or "123:03:59"
-    var ret = "";
-
-    if (hrs > 0) {
-        ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
-    }
-
-    ret += "" + mins + ":" + (secs < 10 ? "0" : "");
-    ret += "" + secs;
-    return ret;
-}
-window.onload = function() {
-  var ctx = new AudioContext();
-  var audio = document.getElementById('audio');
-  var audioSrc = ctx.createMediaElementSource(audio);
-  var analyser = ctx.createAnalyser();
-  // we have to connect the MediaElementSource with the analyser 
-  audioSrc.connect(analyser);
-  // we could configure the analyser: e.g. analyser.fftSize (for further infos read the spec)
- 
-  // frequencyBinCount tells you how many values you'll receive from the analyser
-  var frequencyData = new Uint8Array(analyser.frequencyBinCount);
- 
-  // we're ready to receive some data!
-  // loop
-  function renderFrame() {
-     requestAnimationFrame(renderFrame);
-     // update data in frequencyData
-     analyser.getByteFrequencyData(frequencyData);
-     // render frame based on values in frequencyData
-     // console.log(frequencyData)
-  }
-  audio.start();
-  renderFrame();
-};
-
-			function updateCurrentTime() {
-			var song = document.querySelector('audio');
-			var currentTime = Math.floor(song.currentTime);
-			 currentTime = fancyTimeFormat(currentTime);
-			var duration = Math.floor(song.duration);
-			 duration = fancyTimeFormat(duration)
-			$('.time-elapsed').text(currentTime);
-			$('.song-duration').text(duration);
-			}
-		 var songName = 'Car nachdi';
-
-			window.onload = function() {
-			$('.song-name').text(songName);
-				updateCurrentTime();
-				setInterval(function() {
-				updateCurrentTime();
-				},1000);
-				}
-
-
+    <script src="main.js">
 	
-<!------------------------------------------function end-------------------------------------------------------------------------------------------------->	
-	
-    $('.welcome-screen button').on('click', function() {
-        var name = $('#name-input').val();
-        if (name.length > 2) {
-            var message = "Welcome, " + name;
-            $('.main .user-name').text(message);
-            $('.welcome-screen').addClass('hidden');
-            $('.main').removeClass('hidden');
-        } else {
-            $('#name-input').addClass('error');
-        }
-    });
-    $('.play-icon').on('click', function() {
-        toggleSong()
-    });
-    $('body').on('keypress', function(event) {
-                if (event.keyCode == 32) {
-				toggleSong()
-				}
-            });
     </script>
 </body>
 
