@@ -55,11 +55,7 @@ window.onload = function() {
 };
 //................................................................
 
-var audio = document.getElementById("player");
-audio.addEventListener("ended", function() {
-    audio.src = "nextAudio.mp3";
-    audio.play();
-});
+
 
 		
 			
@@ -104,8 +100,8 @@ audio.addEventListener("ended", function() {
 						},1000);
 						
 						//.............songs names.......................
-					var songList =['Car nachdi','Bebe Di Pasand ','Color Black','Hu Haal Ve','Muchh','Shades of Black']
-					var fileNames = ['song1.mp3','song2.mp3','song3.mp3','song4.mp3','song5.mp3','song6.mp3'];
+					var songList =['Car nachdi','Bebe Di Pasand ','Color Black','Hu Haal Ve','Muchh','Shades of Black','HiGh Rated GaBru']
+					var fileNames = ['song1.mp3','song2.mp3','song3.mp3','song4.mp3','song5.mp3','song6.mp3','song7.mp3'];
 				//var songName1 = 'Car nachdi';
 				// var songName2 = 'Bebe Di Pasand ';
 				//var songName3 = 'Color Black';
@@ -119,7 +115,7 @@ audio.addEventListener("ended", function() {
 						$('#song4 .song-name').text(songList[3]);
 						$('#song5 .song-name').text(songList[4]);
 						$('#song6 .song-name').text(songList[5]);
-						
+						$('#song7 .song-name').text(songList[6]);
 					
 						
 					addSongNameClickEvent(fileNames[0],1);
@@ -128,6 +124,7 @@ audio.addEventListener("ended", function() {
 					addSongNameClickEvent(fileNames[3],4);	
 					addSongNameClickEvent(fileNames[4],5);	
 					addSongNameClickEvent(fileNames[5],6);	
+					addSongNameClickEvent(fileNames[6],7);
 						}
 
 
