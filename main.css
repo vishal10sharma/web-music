@@ -149,7 +149,7 @@ button{
     background-color: #959595;
     height: 8px;
     border-radius: 4px;
-    width: 0;
+    width: 20%;
 
 }
 
@@ -205,4 +205,36 @@ button{
 
 .song-length {
     text-align: right;
+}
+
+.content {
+    position: relative;
+}
+.current-song-wrapper {
+    position: absolute;
+    bottom:80px;
+    display: ;
+}
+
+.current-song-image {
+    height: 150px;
+    width: 150px;
+    margin-right: 1rem;
+}
+
+.current-song-name {
+    font-size: 1.4rem;
+    margin-top: 4px;
+    margin-bottom: 0;
+} 
+
+.current-song-album {
+    margin-top: 0.4rem;
+}
+.player-buttons .fa {
+    margin-right: 2rem;
+}
+
+.fa.disabled {
+    color: gray;
 }

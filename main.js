@@ -1,4 +1,123 @@
-				function toggleSong() {
+//--------------------------looping -------------------------
+//----------repeat   loop----------------------
+//-----------shuffle  loop--------------- 
+
+var currentSongNumber = 1;
+var willLoop = 0;
+var willShuffle = 0; // will use this soon
+
+$('.fa-repeat').on('click',function() {
+    $('.fa-repeat').toggleClass('disabled')
+    willLoop = 1 - willLoop;
+});
+
+$('.fa-random').on('click',function() {
+    $('.fa-random').toggleClass('disabled')
+    willShuffle = 1 - willShuffle;
+});
+
+function timeJump() {
+    var song = document.querySelector('audio')
+    song.currentTime = song.duration - 5;
+}
+
+$('audio').on('ended',function() {
+    var audio = document.querySelector('audio');
+    if (willShuffle == 1) {
+        var nextSongNumber = randomExcluded(1,4,currentSongNumber); // Calling our function from Stackoverflow
+        var nextSongObj = songs[nextSongNumber-1];
+        audio.src = nextSongObj.fileName;
+        toggleSong();
+        changeCurrentSongDetails(nextSongObj);
+        currentSongNumber = nextSongNumber;
+    }
+    else if(currentSongNumber < 4) {
+        var nextSongObj = songs[currentSongNumber];
+        audio.src = nextSongObj.fileName;
+        toggleSong();
+        changeCurrentSongDetails(nextSongObj);
+        currentSongNumber = currentSongNumber + 1;
+    }
+    else if(willLoop == 1) {
+        var nextSongObj = songs[0];
+        audio.src = nextSongObj.fileName;
+        toggleSong();
+        changeCurrentSongDetails(nextSongObj);
+        currentSongNumber =  1;
+    }
+    else {
+        $('.play-icon').removeClass('fa-pause').addClass('fa-play');
+        audio.currentTime = 0;
+    }
+})
+
+
+	var songs=[{
+				'name':'car nachdi',
+				'artist':'Bohemia',
+				'album':'Car nachdi',
+				'duration':'',
+				'fileName':'song1.mp3',
+				'image':'song1.jpg'
+					},	
+					{
+				'name':'Bebe Di Pasand',
+				'artist':'Jordan Sandhu',
+				'album':'Bebe Di Pasand - Single',
+				'duration':'',
+				'fileName':'song2.mp3',
+				'image':'song2.jpg'
+					},	
+					{
+				'name':'Color Black',
+				'artist':'Gama Chahal',
+				'album':'Colour Black ',
+				'duration':'',
+				'fileName':'song3.mp3',
+				'image':'song3.jpg'
+					},
+						
+						{
+				'name':'Hu Haal Ve',
+				'artist':'Ammy Virk',
+				'album':'Teshan',
+				'duration':'',
+				'fileName':'song4.mp3',
+				'image':'song4.jpg'
+					},
+					
+					{
+				'name':'Muchh',
+				'artist':'Dilpreet Dhillon',
+				'album':'Muchh - Single',
+				'duration':'',
+				'fileName':'song5.mp3',
+				'image':'song5.jpg'
+					},
+					
+					{
+				'name':'Shades of Black',
+				'artist':'Fateh',
+				'album':'Shades of Black',
+				'duration':'',
+				'fileName':'song6.mp3',
+				'image':'song6.jpg'
+					},
+
+				{
+				'name':'HiGh Rated GaBru',
+				'artist':'Guru Randhawa',
+				'album':'High Rated Gabru',
+				'duration':'',
+				'fileName':'song7.mp3',
+				'image':'song7.jpg'
+				
+				
+					},
+					
+					]
+
+	function toggleSong() {
 			var song = document.querySelector('audio');
 			if(song.paused == true) {
 			console.log('Playing');
@@ -11,6 +130,8 @@
 			song.pause();
 			}
 			}
+			
+//////////////////////////////////////////////////////////////////////////////////////////////
 			function fancyTimeFormat(time)
 {   
     // Hours, minutes and seconds
@@ -29,32 +150,16 @@
     ret += "" + secs;
     return ret;
 }
-window.onload = function() {
-  var ctx = new AudioContext();
-  var audio = document.getElementById('audio');
-  var audioSrc = ctx.createMediaElementSource(audio);
-  var analyser = ctx.createAnalyser();
-  // we have to connect the MediaElementSource with the analyser 
-  audioSrc.connect(analyser);
-  // we could configure the analyser: e.g. analyser.fftSize (for further infos read the spec)
- 
-  // frequencyBinCount tells you how many values you'll receive from the analyser
-  var frequencyData = new Uint8Array(analyser.frequencyBinCount);
- 
-  // we're ready to receive some data!
-  // loop
-  function renderFrame() {
-     requestAnimationFrame(renderFrame);
-     // update data in frequencyData
-     analyser.getByteFrequencyData(frequencyData);
-     // render frame based on values in frequencyData
-     // console.log(frequencyData)
-  }
-  audio.start();
-  renderFrame();
-};
+
+
+
 //................................................................
 
+						function changeCurrentSongDetails(songObj) {
+							$('.current-song-image').attr('src','img/' + songObj.image)
+							$('.current-song-name').text(songObj.name)
+							$('.current-song-album').text(songObj.album)
+						}
 
 
 		
@@ -73,26 +178,41 @@ window.onload = function() {
 			$('.song-duration').text(duration);
 			}
 //clike event bnaya jo song pe clike krne pr play or pause ho..			
-			function addSongNameClickEvent(songName,position) {
-				var id = '#song' + position;
-			$(id).click(function() {
-			var audio = document.querySelector('audio');
-			var currentSong = audio.src;
-			if(currentSong.search(songName) != -1)
-			{
-			toggleSong();
-			}
-			else {
-			audio.src = songName;
-			toggleSong();
-			}
-			});
-			}
-			
+			function addSongNameClickEvent(songObj,position) {
+				
+					var id = '#song' + position;
+					var songName = songObj.fileName;
+				$(id).click(function() {
+				var audio = document.querySelector('audio');
+				var currentSong = audio.src;
+				if(currentSong.search(songName) != -1)
+				{
+				toggleSong();
+				}
+				else {
+				audio.src = songName;
+				toggleSong();
+				changeCurrentSongDetails(songObj);
+				}
+				});
+				}
+									
 			
 			
 			
 						window.onload = function() {
+						
+						  for(var i=0; i<songs.length;i++) {
+        var obj = songs[i];
+        var name = '#song' + (i+1);
+        var song = $(name);
+        song.find('.song-name').text(obj.name);
+        song.find('.song-artist').text(obj.artist);
+        song.find('.song-album').text(obj.album);
+        song.find('.song-length').text(obj.duration);
+        addSongNameClickEvent(obj,i+1)
+    
+	}
 						
 						updateCurrentTime(); 
 						setInterval(function() {
@@ -100,33 +220,86 @@ window.onload = function() {
 						},1000);
 						
 						//.............songs names.......................
-					var songList =['Car nachdi','Bebe Di Pasand ','Color Black','Hu Haal Ve','Muchh','Shades of Black','HiGh Rated GaBru']
-					var fileNames = ['song1.mp3','song2.mp3','song3.mp3','song4.mp3','song5.mp3','song6.mp3','song7.mp3'];
+	//				var songList = ['Car nachdi','Bebe Di Pasand ','Color Black','Hu Haal Ve','Muchh','Shades of Black','High Rated GaBru'];
+		//			var fileNames = ['song1.mp3','song2.mp3','song3.mp3','song4.mp3','song5.mp3','song6.mp3','song7.mp3'];
+			//	var artistList = ['Bohemia','Jordan Sandhu','Surjit Bhullar','Ammy Virk','Dilpreet Dhillon','Fateh','Guru Randhawa']; 
+				//var album = ['Car nachdi','Bebe Di Pasand - Single','Colour Black (Mitran Da Rang','Teshan','Muchh - Single','Shades of Black','High Rated Gabru']; 
+			//	var duration = ['03:25','03:48','03:41','02:34','03:46','04:08','03:34']; 
 				//var songName1 = 'Car nachdi';
-				// var songName2 = 'Bebe Di Pasand ';
+				 //var songName2 = 'Bebe Di Pasand ';
 				//var songName3 = 'Color Black';
 				//var songName4 = 'Hu Haal Ve';
 				//var songName5 = 'Muchh';
 				//var songName6 = 'Shades of Black';
-						//
-						$('#song1 .song-name').text(songList[0]); 
+				
+				
+				/*for(var i =0; i < songList.length;i++) {
+						var name = '#song' + (i+1);
+						var song = $(name);
+						song.find('.song-name').text(songList[i]);
+						song.find('.song-artist').text(artistList[i]);
+						 song.find('.song-album').text(album[i]); // Added
+						song.find('.song-length').text(duration[i]); // Added
+					}*/
+						
+				
+					/*	$('#song1 .song-name').text(songList[0]);
+						$('#song1 .song-artist').text(artistList[0]);
+						
+						
 						$('#song2 .song-name').text(songList[1]);
-						$('#song3 .song-name').text(songList[2]);
+						$('#song2 .song-artist').text(artistList[1]);
+						
+						
+						$('#song3 .song-name').text(songList[2]);	
+						$('#song3 .song-artist').text(artistList[2]);
+
 						$('#song4 .song-name').text(songList[3]);
+						$('#song4 .song-artist').text(artistList[3]);
+
+
 						$('#song5 .song-name').text(songList[4]);
+						$('#song5 .song-artist').text(artistList[4]);
+
 						$('#song6 .song-name').text(songList[5]);
+						$('#song6 .song-artist').text(artistList[5]);
+
 						$('#song7 .song-name').text(songList[6]);
+						$('#song7 .song-artist').text(artistList[6]);
+					    */
+						
+												
+						
+						
+						
+						
+						
+						/*$('#song1 .song-album').text(album[0]);
+						$('#song2 .song-album').text(album[1]);
+						$('#song3 .song-album').text(album[2]);						
+						$('#song4 .song-album').text(album[3]);
+						$('#song5 .song-album').text(album[4]);
+						$('#song6 .song-album').text(album[5]);
+						$('#song7 .song-album').text(album[6]);
+						
+						$('#song1 .song-length').text(duration[0]);
+						$('#song2 .song-length').text(duration[1]);
+						$('#song3 .song-length').text(duration[2]);						
+						$('#song4 .song-length').text(duration[3]);
+						$('#song5 .song-length').text(duration[4]);
+						$('#song6 .song-length').text(duration[5]);
+						$('#song7 .song-length').text(duration[6]);
+					*/
+	
 					
 						
-					addSongNameClickEvent(fileNames[0],1);
-					addSongNameClickEvent(fileNames[1],2);
-					addSongNameClickEvent(fileNames[2],3);
-					addSongNameClickEvent(fileNames[3],4);	
-					addSongNameClickEvent(fileNames[4],5);	
-					addSongNameClickEvent(fileNames[5],6);	
-					addSongNameClickEvent(fileNames[6],7);
-						}
+					//for (var i = 0; i < fileNames.length ; i++) {
+						//	addSongNameClickEvent(fileNames[i],i+1)
+						//}
+			
 
+	}
+			 
 
 	
 <!------------------------------------------function end-------------------------------------------------------------------------------------------------->	
@@ -146,7 +319,9 @@ window.onload = function() {
         toggleSong()
     });
     $('body').on('keypress', function(event) {
-                if (event.keyCode == 32) {
+                  var target = event.target;
+			if (event.keyCode == 32 && target.tagName !='INPUT')
+		{
 				toggleSong()
 				}
             });
