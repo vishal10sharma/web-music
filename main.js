@@ -56,7 +56,7 @@ $('audio').on('ended',function() {
 				'name':'car nachdi',
 				'artist':'Bohemia',
 				'album':'Car nachdi',
-				'duration':'',
+				'duration':'03:25',
 				'fileName':'song1.mp3',
 				'image':'song1.jpg'
 					},	
@@ -64,7 +64,7 @@ $('audio').on('ended',function() {
 				'name':'Bebe Di Pasand',
 				'artist':'Jordan Sandhu',
 				'album':'Bebe Di Pasand - Single',
-				'duration':'',
+				'duration':'03:48',
 				'fileName':'song2.mp3',
 				'image':'song2.jpg'
 					},	
@@ -72,7 +72,7 @@ $('audio').on('ended',function() {
 				'name':'Color Black',
 				'artist':'Gama Chahal',
 				'album':'Colour Black ',
-				'duration':'',
+				'duration':'03:41',
 				'fileName':'song3.mp3',
 				'image':'song3.jpg'
 					},
@@ -81,7 +81,7 @@ $('audio').on('ended',function() {
 				'name':'Hu Haal Ve',
 				'artist':'Ammy Virk',
 				'album':'Teshan',
-				'duration':'',
+				'duration':'02:34',
 				'fileName':'song4.mp3',
 				'image':'song4.jpg'
 					},
@@ -90,7 +90,7 @@ $('audio').on('ended',function() {
 				'name':'Muchh',
 				'artist':'Dilpreet Dhillon',
 				'album':'Muchh - Single',
-				'duration':'',
+				'duration':'03:46',
 				'fileName':'song5.mp3',
 				'image':'song5.jpg'
 					},
@@ -99,7 +99,7 @@ $('audio').on('ended',function() {
 				'name':'Shades of Black',
 				'artist':'Fateh',
 				'album':'Shades of Black',
-				'duration':'',
+				'duration':'04:08',
 				'fileName':'song6.mp3',
 				'image':'song6.jpg'
 					},
@@ -108,7 +108,7 @@ $('audio').on('ended',function() {
 				'name':'HiGh Rated GaBru',
 				'artist':'Guru Randhawa',
 				'album':'High Rated Gabru',
-				'duration':'',
+				'duration':'03:34',
 				'fileName':'song7.mp3',
 				'image':'song7.jpg'
 				
@@ -201,7 +201,8 @@ $('audio').on('ended',function() {
 			
 			
 						window.onload = function() {
-						
+					changeCurrentSongDetails(songs[0]);
+					
 						  for(var i=0; i<songs.length;i++) {
         var obj = songs[i];
         var name = '#song' + (i+1);
@@ -218,87 +219,15 @@ $('audio').on('ended',function() {
 						setInterval(function() {
 						updateCurrentTime();
 						},1000);
-						
-						//.............songs names.......................
-	//				var songList = ['Car nachdi','Bebe Di Pasand ','Color Black','Hu Haal Ve','Muchh','Shades of Black','High Rated GaBru'];
-		//			var fileNames = ['song1.mp3','song2.mp3','song3.mp3','song4.mp3','song5.mp3','song6.mp3','song7.mp3'];
-			//	var artistList = ['Bohemia','Jordan Sandhu','Surjit Bhullar','Ammy Virk','Dilpreet Dhillon','Fateh','Guru Randhawa']; 
-				//var album = ['Car nachdi','Bebe Di Pasand - Single','Colour Black (Mitran Da Rang','Teshan','Muchh - Single','Shades of Black','High Rated Gabru']; 
-			//	var duration = ['03:25','03:48','03:41','02:34','03:46','04:08','03:34']; 
-				//var songName1 = 'Car nachdi';
-				 //var songName2 = 'Bebe Di Pasand ';
-				//var songName3 = 'Color Black';
-				//var songName4 = 'Hu Haal Ve';
-				//var songName5 = 'Muchh';
-				//var songName6 = 'Shades of Black';
+		 $('#songs').DataTable({
+        paging: false
+    });
+             
+             
+			 }				
 				
-				
-				/*for(var i =0; i < songList.length;i++) {
-						var name = '#song' + (i+1);
-						var song = $(name);
-						song.find('.song-name').text(songList[i]);
-						song.find('.song-artist').text(artistList[i]);
-						 song.find('.song-album').text(album[i]); // Added
-						song.find('.song-length').text(duration[i]); // Added
-					}*/
-						
-				
-					/*	$('#song1 .song-name').text(songList[0]);
-						$('#song1 .song-artist').text(artistList[0]);
-						
-						
-						$('#song2 .song-name').text(songList[1]);
-						$('#song2 .song-artist').text(artistList[1]);
-						
-						
-						$('#song3 .song-name').text(songList[2]);	
-						$('#song3 .song-artist').text(artistList[2]);
 
-						$('#song4 .song-name').text(songList[3]);
-						$('#song4 .song-artist').text(artistList[3]);
-
-
-						$('#song5 .song-name').text(songList[4]);
-						$('#song5 .song-artist').text(artistList[4]);
-
-						$('#song6 .song-name').text(songList[5]);
-						$('#song6 .song-artist').text(artistList[5]);
-
-						$('#song7 .song-name').text(songList[6]);
-						$('#song7 .song-artist').text(artistList[6]);
-					    */
-						
-												
-						
-						
-						
-						
-						
-						/*$('#song1 .song-album').text(album[0]);
-						$('#song2 .song-album').text(album[1]);
-						$('#song3 .song-album').text(album[2]);						
-						$('#song4 .song-album').text(album[3]);
-						$('#song5 .song-album').text(album[4]);
-						$('#song6 .song-album').text(album[5]);
-						$('#song7 .song-album').text(album[6]);
-						
-						$('#song1 .song-length').text(duration[0]);
-						$('#song2 .song-length').text(duration[1]);
-						$('#song3 .song-length').text(duration[2]);						
-						$('#song4 .song-length').text(duration[3]);
-						$('#song5 .song-length').text(duration[4]);
-						$('#song6 .song-length').text(duration[5]);
-						$('#song7 .song-length').text(duration[6]);
-					*/
 	
-					
-						
-					//for (var i = 0; i < fileNames.length ; i++) {
-						//	addSongNameClickEvent(fileNames[i],i+1)
-						//}
-			
-
-	}
 			 
 
 	
