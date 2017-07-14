@@ -24,7 +24,7 @@ function timeJump() {
 $('audio').on('ended',function() {
     var audio = document.querySelector('audio');
     if (willShuffle == 1) {
-        var nextSongNumber = randomExcluded(1,4,currentSongNumber); // Calling our function from Stackoverflow
+        var nextSongNumber = randomExcluded(1,11,currentSongNumber); // Calling our function from Stackoverflow
         var nextSongObj = songs[nextSongNumber-1];
         audio.src = nextSongObj.fileName;
         toggleSong();
@@ -111,10 +111,42 @@ $('audio').on('ended',function() {
 				'duration':'03:34',
 				'fileName':'song7.mp3',
 				'image':'song7.jpg'
-				
-				
-					},
+				},
 					
+				{
+				'name':'bady',
+				'artist':'Mickey Singh, Sunny Brown',
+				'album':'Body',
+				'duration':'04:03',
+				'fileName':'song8.mp3',
+				'image':'song8.jpg'
+				},	
+				{
+				'name':'Paani',
+				'artist':'Yuvraj Hans',
+				'album':'Paani',
+				'duration':'03:06',
+				'fileName':'song9.mp3',
+				'image':'song9.jpg'
+				},	
+					{
+				'name':'Sheesha Down',
+				'artist':'Ikka',
+				'album':'HSheesha Down',
+				'duration':'03:07',
+				'fileName':'song10.mp3',
+				'image':'song10.jpg'
+				},
+				{
+				'name':'Soch',
+				'artist':'Hardy Sandhu',
+				'album':'Soch',
+				'duration':'05:47',
+				'fileName':'song11.mp3',
+				'image':'song11.jpg'
+				},
+				
+				
 					]
 
 	function toggleSong() {

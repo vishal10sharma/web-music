@@ -30,7 +30,7 @@ h1 {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid ;
     border-radius: 4px;
     box-sizing: border-box;
 	font-size:20px;
@@ -56,7 +56,7 @@ button{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-	background-image: url("http://cdn.wallpapersafari.com/49/16/XNygEK.jpg");
+	background-image: url("img/main.jpg");
 	background-size: 100%;
 }
 
@@ -67,7 +67,9 @@ button{
     flex-direction: column;
     color: white;
     background-color: #1f1f1f;
+	
 }
+
 
 .main header {
     height: 80px;
@@ -80,6 +82,7 @@ button{
     flex:1;
     background-color: #1f1f1f;
 }
+
 
 .main footer {
     height: 80px;
@@ -101,13 +104,7 @@ button{
    margin-top:-25px;
 }
 
-.backward{
-	display:flex;
-    font-size: 1.5rem;
-    justify-content: center;
-   margin-left:-100px;
-   margin-top:-24px;
-}
+
 
 .hidden {
     display: none;
@@ -214,11 +211,13 @@ button{
     position: absolute;
     bottom:80px;
     display: ;
+	overflow: auto;
+	
 }
 
 .current-song-image {
-    height: 150px;
-    width: 150px;
+    height: 170px;
+    width: 170px;
     margin-right: 1rem;
 }
 
