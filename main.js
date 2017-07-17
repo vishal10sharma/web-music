@@ -198,6 +198,17 @@ $('audio').on('ended',function() {
 			$('.time-elapsed').text(currentTime);
 			$('.song-duration').text(duration);
 			}
+			
+			function pbf(){
+				var elm = document.querySelector('audio');
+				var cur = elm.currentTime;
+				var dur = elm.duration;
+				var percentage = (cur/dur)*100;
+				$("#progress-filled").css('width',percentage + "%");
+				
+			}
+			
+			
 //clike event bnaya jo song pe clike krne pr play or pause ho..			
 			function addSongNameClickEvent(songObj,position) {
 				
@@ -221,8 +232,10 @@ $('audio').on('ended',function() {
 			
 			
 			
-						window.onload = function() {
-					changeCurrentSongDetails(songs[0]);
+				window.onload = function() {
+				changeCurrentSongDetails(songs[0]);
+				
+				
 					
 						  for(var i=0; i<songs.length;i++) {
         var obj = songs[i];
@@ -239,6 +252,8 @@ $('audio').on('ended',function() {
 						updateCurrentTime(); 
 						setInterval(function() {
 						updateCurrentTime();
+							pbf();
+			 
 						},1000);
 					 $('#songs').DataTable({
 						paging: false
@@ -247,21 +262,27 @@ $('audio').on('ended',function() {
 						
 						
 					});
-             
+           
              
 			 }				
-				
+		$('.fa fa-step-forward').on('click',function(){
+					
+					var nextSongObj = songs[0];
+        audio.src = nextSongObj.fileName;
+       
+        changeCurrentSongDetails(nextSongObj);
+        currentSongNumber =  1;
+					
+					
+					
+				})
 
 	
 			 
 
 	
 <!------------------------------------------function end-------------------------------------------------------------------------------------------------->	
-	$('.fa fa-bar-chart').on('click',function(){
-			$('.main').addClass('hidden');
-			 $('.welcome-screen').removeClass('hidden');
-         
-	})	
+		
 	
 	
 	

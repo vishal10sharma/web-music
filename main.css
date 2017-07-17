@@ -142,12 +142,11 @@ button{
     margin-left: 6px;
 }
 
-.progress-filled {
+#progress-filled {
     background-color: #959595;
     height: 8px;
     border-radius: 4px;
-    
-
+   
 }
 
 .main .content {
