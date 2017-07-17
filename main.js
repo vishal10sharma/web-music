@@ -116,37 +116,23 @@ $('audio').on('ended',function() {
 				'image':'song7.jpg'
 				},
 					
-				{
-				'name':'bady',
-				'artist':'Mickey Singh, Sunny Brown',
-				'album':'Body',
-				'duration':'04:03',
-				'fileName':'song8.mp3',
-				'image':'song8.jpg'
-				},	
+			
 				{
 				'name':'Paani',
 				'artist':'Yuvraj Hans',
 				'album':'Paani',
 				'duration':'03:06',
-				'fileName':'song9.mp3',
-				'image':'song9.jpg'
+				'fileName':'song8.mp3',
+				'image':'song8.jpg'
 				},	
-					{
-				'name':'Sheesha Down',
-				'artist':'Ikka',
-				'album':'HSheesha Down',
-				'duration':'03:07',
-				'fileName':'song10.mp3',
-				'image':'song10.jpg'
-				},
+				
 				{
 				'name':'Soch',
 				'artist':'Hardy Sandhu',
 				'album':'Soch',
 				'duration':'05:47',
-				'fileName':'song11.mp3',
-				'image':'song11.jpg'
+				'fileName':'song9.mp3',
+				'image':'song9.jpg'
 				},
 				
 				
@@ -256,6 +242,10 @@ $('audio').on('ended',function() {
 						},1000);
 					 $('#songs').DataTable({
 						paging: false
+						
+						
+						
+						
 					});
              
              
