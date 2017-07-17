@@ -31,7 +31,7 @@ $('audio').on('ended',function() {
         changeCurrentSongDetails(nextSongObj);
         currentSongNumber = nextSongNumber;
     }
-    else if(currentSongNumber < 4) {
+    else if(currentSongNumber < 11) {
         var nextSongObj = songs[currentSongNumber];
         audio.src = nextSongObj.fileName;
         toggleSong();
@@ -50,6 +50,9 @@ $('audio').on('ended',function() {
         audio.currentTime = 0;
     }
 })
+
+/*------------------------------------------------------*/
+
 
 
 	var songs=[{
@@ -251,9 +254,9 @@ $('audio').on('ended',function() {
 						setInterval(function() {
 						updateCurrentTime();
 						},1000);
-		 $('#songs').DataTable({
-        paging: false
-    });
+					 $('#songs').DataTable({
+						paging: false
+					});
              
              
 			 }				
@@ -264,6 +267,15 @@ $('audio').on('ended',function() {
 
 	
 <!------------------------------------------function end-------------------------------------------------------------------------------------------------->	
+	$('.fa fa-bar-chart').on('click',function(){
+			$('.main').addClass('hidden');
+			 $('.welcome-screen').removeClass('hidden');
+         
+	})	
+	
+	
+	
+	
 	
     $('.welcome-screen button').on('click', function() {
         var name = $('#name-input').val();

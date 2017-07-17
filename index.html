@@ -12,7 +12,7 @@
 <body>
     <div class="wrapper">
 	
-        <section class="welcome-screen">
+        <section class="welcome-screen hidden">
             <h1> WELCOME TO VISHAL MUSIC WORLD </h1>
             <h3> Enter your name to access your account </h3>
 			
@@ -25,7 +25,7 @@
             </div>
 			
         </section>
-        <div class="main hidden">
+        <div class="main">
             <header>
                 <div class="right floated user-name"> </div>
             </header>
@@ -135,6 +135,11 @@
 							</tbody>
 		</table>
             </section>
+			<div>
+			
+			<canvas id="analyser_render"></canvas>
+			</div>
+			
             <footer>
 			
   
@@ -145,7 +150,9 @@
       <i class="fa fa-step-backward clickable" aria-hidden="true"></i>
       <i class="fa fa-play clickable play-icon" aria-hidden="true"></i>
       <i class="fa fa-step-forward clickable" aria-hidden="true"></i>
+	 
       <i class="fa fa-repeat disabled clickable" aria-hidden="true"></i>
+	   <i src= "visual.js" class="fa fa-bar-chart  clickable" aria-hidden="true"></i>
     </div>
 					
 					
@@ -164,7 +171,9 @@
     
 	  <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js">
     </script>
+	<script src="main2.js">  </script>
 	
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js">  </script>
 	<script src="main.js">
 	
     </script>
