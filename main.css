@@ -208,7 +208,7 @@ button{
 }
 .current-song-wrapper {
     position: absolute;
-    bottom:80px;
+    bottom:200px;
     display: auto ;
 	overflow: auto;
 	margin-left:20px;
