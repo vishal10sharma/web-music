@@ -273,7 +273,7 @@ $('audio').on('ended',function() {
 			 
 						},1000);
 					 $('#songs').DataTable({
-						 scrolly:"200px",
+						 scrollY:"300px",
 						 scrollCollapse:true,
 						paging: false
 						
