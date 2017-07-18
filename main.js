@@ -256,7 +256,9 @@ $('audio').on('ended',function() {
 			 
 						},1000);
 					 $('#songs').DataTable({
-						paging: false
+						 "scrolly":"200px",
+						 "scrollCollapse":true,
+						"paging": false
 						
 						
 						
