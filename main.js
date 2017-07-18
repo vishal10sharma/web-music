@@ -72,7 +72,7 @@ $('audio').on('ended',function() {
 				'image':'song2.jpg'
 					},	
 					{
-				'name':'Color Black',
+				'name':'Colour Black',
 				'artist':'Gama Chahal',
 				'album':'Colour Black ',
 				'duration':'03:41',
@@ -135,6 +135,23 @@ $('audio').on('ended',function() {
 				'image':'song9.jpg'
 				},
 				
+				{
+				'name':'Gangland',
+				'artist':'Mankirt Aulakh ',
+				'album':'Gangland',
+				'duration':'02:48',
+				'fileName':'song10.mp3',
+				'image':'song10.jpg'
+				},
+				
+					{
+				'name':'Dill Tutda',
+				'artist':'Jassi Gill',
+				'album':'Dill Tutda',
+				'duration':'04:00',
+				'fileName':'song11.mp3',
+				'image':'song11.jpg'
+				},
 				
 					]
 
@@ -256,9 +273,9 @@ $('audio').on('ended',function() {
 			 
 						},1000);
 					 $('#songs').DataTable({
-						 "scrolly":"200px",
-						 "scrollCollapse":true,
-						"paging": false
+						 scrolly:"200px",
+						 scrollCollapse:true,
+						paging: false
 						
 						
 						
